@@ -22,9 +22,17 @@ namespace RestaurantAndDishes.Controllers
         // GET: Dishes
         public async Task<IActionResult> Index()
         {
-              return _context.Dishes != null ? 
+            var dishWithRestaurantName = await _context.Dishes.Select(dish => new DishViewModel
+            {
+                dish_viewModel = dish,
+                RestaurantName = _context.Restaurant.Where(restaurant => restaurant.Id == dish.Restaurant_Id)
+                .Select(restaurant => restaurant.Name).FirstOrDefault()
+            }).ToListAsync();
+
+            return View(dishWithRestaurantName);
+              /*return _context.Dishes != null ? 
                           View(await _context.Dishes.ToListAsync()) :
-                          Problem("Entity set 'RestaurantAndDishesContext.Dishes'  is null.");
+                          Problem("Entity set 'RestaurantAndDishesContext.Dishes'  is null.");*/
         }
 
         // GET: Dishes/Details/5

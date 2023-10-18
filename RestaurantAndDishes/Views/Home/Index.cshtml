@@ -2,7 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 
+<head>
+    <script src="~/js/randomizeDish.js"></script>
+</head>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Random Dish?</h1>
+
+    <button id="randomizeButton">Randomize me</button>
+
+    <div>
+
+        <h2>Random Dish:</h2>
+        <p id="randomDishName"></p>
+
+        <h2>From Restaurant:</h2>
+        <p id="randomRestaurantName"></p>
+
+    </div>
 </div>
